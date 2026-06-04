@@ -1,0 +1,182 @@
+export interface Skill {
+  name: string;
+  desc: string;
+}
+
+export interface SkillCategory {
+  category: string;
+  icon: string;
+  items: Skill[];
+}
+
+export interface Certification {
+  name: string;
+  issuer: string;
+}
+
+export interface Experience {
+  id: string;
+  company: string;
+  role: string;
+  period: string;
+  bullets: string[];
+}
+
+export interface Project {
+  title: string;
+  subtitle: string;
+  tags: string[];
+  desc: string;
+}
+
+export interface Education {
+  institution: string;
+  degree: string;
+  year: string;
+  tags: string[];
+}
+
+export const SKILL_CATEGORIES: SkillCategory[] = [
+  {
+    category: "Firewall & Network Security",
+    icon: "Shield",
+    items: [
+      { name: "Palo Alto NGFW", desc: "Layer 7 visibility, threat prevention, Decryption, and App-ID enforcement." },
+      { name: "SonicWALL", desc: "Advanced threat protection, routing, and multi-tenant security gateways." },
+      { name: "Cisco Routing & Switching", desc: "Enterprise infrastructure engineering, VLANs, OSPF, and BGP routing." },
+      { name: "GlobalProtect VPN", desc: "Secure remote access for distributed workforces under Zero Trust models." },
+      { name: "IPSec VPN", desc: "Robust site-to-site tunnels connecting global branch offices and clouds." }
+    ]
+  },
+  {
+    category: "Cloud & SASE",
+    icon: "Cloud",
+    items: [
+      { name: "Prisma SASE", desc: "Unifying security and SD-WAN into a cloud-delivered service model." },
+      { name: "Prisma SD-WAN", desc: "Application-defined routing and autonomous network control." },
+      { name: "AWS Cloud Security", desc: "Securing VPCs, security groups, IAM architectures, and transit gateways." },
+      { name: "Strata Cloud Manager", desc: "Centralized AI-powered operations and unified management." },
+      { name: "Cortex XDR", desc: "Deploying endpoint agents, correlation analysis, and threat response." }
+    ]
+  },
+  {
+    category: "Identity & Zero Trust",
+    icon: "Fingerprint",
+    items: [
+      { name: "SAML / MFA", desc: "Securing identity assertions and multi-factor authentication integrations." },
+      { name: "Active Directory", desc: "Domain services management, GPO policies, and access controls." },
+      { name: "Panorama", desc: "Centralized firewall orchestration, template stacks, and device groups." },
+      { name: "Zero Trust Architecture", desc: "Designing perimeter-less networks with continuous verification." }
+    ]
+  },
+  {
+    category: "Monitoring & Response",
+    icon: "Activity",
+    items: [
+      { name: "SIEM & Splunk", desc: "Log aggregation, query engineering, and security event correlation." },
+      { name: "Wireshark", desc: "Deep packet analysis for root-cause diagnosis and anomaly detection." },
+      { name: "Proofpoint", desc: "Email security gateway enforcement and targeted threat protection." },
+      { name: "ServiceNow", desc: "ITIL service management, incident response, and Change Control." }
+    ]
+  },
+  {
+    category: "OS & Productivity",
+    icon: "Cpu",
+    items: [
+      { name: "Windows / Windows Server", desc: "Domain administration, DNS/DHCP configuration, and server hardening." },
+      { name: "Linux Administration", desc: "Command line operations, script automation, and service hosting." },
+      { name: "Microsoft 365 / Exchange", desc: "Cloud office suites, tenant migrations, and security compliance." }
+    ]
+  }
+];
+
+export const CERTIFICATIONS: Certification[] = [
+  { name: "Palo Alto PCNSE", issuer: "Palo Alto Networks Certified Network Security Engineer" },
+  { name: "Palo Alto PCNSA", issuer: "Palo Alto Networks Certified Network Security Administrator" },
+  { name: "Palo Alto NGFE", issuer: "Palo Alto Networks Next-Generation Firewall Engineer" },
+  { name: "AWS Solutions Architect", issuer: "Amazon Web Services" },
+  { name: "Cisco CCNA", issuer: "Cisco Certified Network Associate" },
+  { name: "MCP / MCSA / MCSE", issuer: "Microsoft Certified Solutions Expert" },
+  { name: "SNSA 7.0", issuer: "SonicWall Network Security Administrator" }
+];
+
+export const EXPERIENCES: Experience[] = [
+  {
+    id: "ingram",
+    company: "IngramMicro",
+    role: "Senior Service Delivery Engineer / Firewall",
+    period: "Mar 2024 – Present",
+    bullets: [
+      "Architected and deployed GlobalProtect VPN at scale, enabling secure remote access for workforce, contractors, and third-party vendors under a Zero Trust model.",
+      "Engineered identity integrations using SAML and Multi-Factor Authentication (MFA) to enforce context-based access policies across enterprise resources.",
+      "Orchestrated global firewall deployments using Panorama automation, standardizing device groups, templates, and security policies.",
+      "Integrated Palo Alto systems with enterprise SIEM platforms, defining parsing rules and dashboards to identify and mitigate active indicators of compromise.",
+      "Served as an authorized ATP (Authorized Training Partner) Trainer, instructing engineers globally on advanced Palo Alto and SonicWALL administration."
+    ]
+  },
+  {
+    id: "cloud-harmonics",
+    company: "Cloud Harmonics (Ingram Micro Co.)",
+    role: "Associate Solutions Architect",
+    period: "Jun 2022 – Mar 2024",
+    bullets: [
+      "Delivered multi-industry design, deployment, and implementation support for complex Palo Alto firewall environments.",
+      "Generated detailed technical documentation, design blueprints, and migration procedures for enterprise security migrations.",
+      "Educated and certified engineering teams as an ATP Trainer, focusing on cloud security architectures and SASE integrations."
+    ]
+  },
+  {
+    id: "ntta",
+    company: "North Texas Tollway Authority",
+    role: "System/Network Engineer",
+    period: "Dec 2019 – Apr 2021",
+    bullets: [
+      "Managed mobile device management (MDM) infrastructure to secure and monitor enterprise endpoints across the tollway authority.",
+      "Administered end-to-end incident resolution via ServiceNow and Remedy ticketing systems, ensuring adherence to strict SLAs.",
+      "Maintained comprehensive network topology documentation, asset inventories, and change control procedures.",
+      "Delivered Tier-3 remote IT infrastructure support to ensure 24/7 availability of toll collection network nodes."
+    ]
+  },
+  {
+    id: "stephen-gould",
+    company: "Stephen Gould Corporation",
+    role: "IT Help Desk",
+    period: "Jun 2018 – Dec 2019",
+    bullets: [
+      "Administered Office 365, Exchange Online, and Active Directory environments for thousands of corporate users.",
+      "Managed Windows Server (2008/2012) domain controllers, managing GPOs, DHCP/DNS, and file permissions.",
+      "Deployed Cisco Meraki cloud-managed access points and security appliances to branch offices.",
+      "Assisted in network infrastructure designs to modernize legacy routing protocols and enhance perimeter security."
+    ]
+  }
+];
+
+export const PROJECTS: Project[] = [
+  {
+    title: "Cortex XDR Enterprise Deployment",
+    subtitle: "End-to-End Endpoint Security & Threat Hunting Architecture",
+    tags: ["Endpoint Security", "Threat Hunting", "XDR", "Palo Alto", "RCA Analysis"],
+    desc: "Architected a comprehensive endpoint detection and response system integrated with next-generation firewalls. Deployed agents across thousands of endpoints, configured behavioral analysis rules to intercept zero-day threats, and utilized root-cause analysis (RCA) tools to trace and neutralize lateral movements within the network."
+  }
+];
+
+export const EDUCATION_ITEMS: Education[] = [
+  {
+    institution: "University of Loyola, New Orleans",
+    degree: "Cybersecurity Professional Certificate",
+    year: "2022",
+    tags: ["Penetration Testing", "Threat Intelligence", "Incident Response", "Network Defense"]
+  },
+  {
+    institution: "Udemy",
+    degree: "SOC Analyst Training",
+    year: "2022",
+    tags: ["SIEM Operations", "Security Analysis", "Splunk Core", "Wireshark Packet Analysis"]
+  },
+  {
+    institution: "University of Ibadan",
+    degree: "B.Sc. Physics",
+    year: "1992",
+    tags: ["Quantum Mechanics", "Analytical Methods", "Electromagnetism", "Problem Solving"]
+  }
+];
