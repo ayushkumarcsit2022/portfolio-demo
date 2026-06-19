@@ -13,7 +13,7 @@ export default function CertBadge({ name, issuer }: CertBadgeProps) {
   const mockHash = `CERT-${name.replace(/\s+/g, "").substring(0, 4).toUpperCase()}-${(name.length * 137).toString(16).toUpperCase()}`;
 
   return (
-    <div className="shimmer-hover relative p-5 panel-glass border-l-4 border-l-accent hover:border-accent/40 rounded-r-md transition-all duration-300 flex flex-col justify-between gap-4 h-full hover:shadow-[0_0_20px_rgba(0,245,255,0.06)] group">
+    <div className="shimmer-hover relative p-5 panel-glass border-l-4 border-l-accent hover:border-accent/40 rounded-r-md transition-all duration-300 flex flex-col justify-between gap-4 h-full hover:shadow-[0_0_20px_rgba(0,102,255,0.08)] group">
       
       {/* Top Section */}
       <div className="flex items-start gap-4">

@@ -5,11 +5,29 @@ import Button from "../ui/Button";
 import { Mail, Phone, MapPin, ExternalLink, Terminal, ShieldAlert } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Contact() {
+interface ContactProps {
+  data?: {
+    title: string;
+    subtitle: string;
+    email: string;
+    phone: string;
+    linkedin: string;
+    location: string;
+  };
+}
+
+export default function Contact({ data }: ContactProps) {
+  const titleToUse = data?.title || "Initiate Secure Connection";
+  const subtitleToUse = data?.subtitle || "Available for enterprise engineering projects, infrastructure auditing, SASE designs, and full-time cybersecurity leadership roles.";
+  const emailToUse = data?.email || "oloritemi@yahoo.co.uk";
+  const phoneToUse = data?.phone || "214-499-1461";
+  const linkedinToUse = data?.linkedin || "https://www.linkedin.com/in/gbenga-owadokun-aws-ccna-cnss-network-security-engineer";
+  const locationToUse = data?.location || "Dallas, TX Node";
+
   const contactChips = [
-    { label: "oloritemi@yahoo.co.uk", href: "mailto:oloritemi@yahoo.co.uk", icon: Mail },
-    { label: "214-499-1461", href: "tel:214-499-1461", icon: Phone },
-    { label: "Dallas, TX Node", href: null, icon: MapPin }
+    { label: emailToUse, href: `mailto:${emailToUse}`, icon: Mail },
+    { label: phoneToUse, href: `tel:${phoneToUse}`, icon: Phone },
+    { label: locationToUse, href: null, icon: MapPin }
   ];
 
   const [encryptionProgress, setEncryptionProgress] = useState(0);
@@ -38,7 +56,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="panel-glass rounded-lg p-8 md:p-12 border border-border-color shadow-[0_0_40px_rgba(0,245,255,0.05)] scanline max-w-3xl mx-auto relative corner-decor"
+          className="panel-glass rounded-lg p-8 md:p-12 border border-border-color shadow-[0_0_40px_rgba(0,102,255,0.08)] scanline max-w-3xl mx-auto relative corner-decor"
         >
           {/* Header */}
           <div className="space-y-4 mb-8">
@@ -48,11 +66,11 @@ export default function Contact() {
             </div>
 
             <h2 className="font-heading text-2xl sm:text-4xl font-black text-text-primary uppercase tracking-tight">
-              Initiate Secure Connection
+              {titleToUse}
             </h2>
 
             <p className="font-sans text-sm sm:text-base text-text-muted max-w-xl mx-auto leading-relaxed">
-              Available for enterprise engineering projects, infrastructure auditing, SASE designs, and full-time cybersecurity leadership roles.
+              {subtitleToUse}
             </p>
           </div>
 
@@ -81,13 +99,13 @@ export default function Contact() {
 
           {/* Action buttons */}
           <div className="flex flex-wrap justify-center gap-4 pt-2">
-            <Button variant="primary" href="mailto:oloritemi@yahoo.co.uk" className="px-8 py-3.5">
-              <Mail className="w-4 h-4 text-background" />
+            <Button variant="primary" href={`mailto:${emailToUse}`} className="px-8 py-3.5">
+              <Mail className="w-4 h-4 text-white" />
               <span>Send Secure Email</span>
             </Button>
             <Button
               variant="ghost"
-              href="https://www.linkedin.com/in/gbenga-owadokun-aws-ccna-cnss-network-security-engineer"
+              href={linkedinToUse}
               className="px-8 py-3.5"
             >
               <svg

@@ -6,7 +6,11 @@ import CertBadge from "../ui/CertBadge";
 import SectionHeading from "../ui/SectionHeading";
 import { motion } from "framer-motion";
 
-export default function Certifications() {
+interface CertificationsProps {
+  items?: typeof CERTIFICATIONS;
+}
+
+export default function Certifications({ items = CERTIFICATIONS }: CertificationsProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -43,7 +47,7 @@ export default function Certifications() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
-          {CERTIFICATIONS.map((cert, idx) => (
+          {items.map((cert, idx) => (
             <motion.div
               key={idx}
               variants={itemVariants}

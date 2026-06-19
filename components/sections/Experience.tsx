@@ -6,7 +6,11 @@ import TimelineItem from "../ui/TimelineItem";
 import SectionHeading from "../ui/SectionHeading";
 import { motion } from "framer-motion";
 
-export default function Experience() {
+interface ExperienceProps {
+  list?: typeof EXPERIENCES;
+}
+
+export default function Experience({ list = EXPERIENCES }: ExperienceProps) {
   return (
     <section id="experience" className="py-24 bg-background relative overflow-hidden">
       {/* Divider & Cyber Grid */}
@@ -24,7 +28,7 @@ export default function Experience() {
           {/* Main vertical line for timeline */}
           <div className="absolute left-[7px] sm:left-[11px] top-4 bottom-4 w-[2px] bg-border-color" />
 
-          {EXPERIENCES.map((exp, idx) => (
+          {list.map((exp, idx) => (
             <motion.div
               key={exp.id}
               initial={{ opacity: 0, x: -20 }}
@@ -37,7 +41,7 @@ export default function Experience() {
                 role={exp.role}
                 period={exp.period}
                 bullets={exp.bullets}
-                isLast={idx === EXPERIENCES.length - 1}
+                isLast={idx === list.length - 1}
               />
             </motion.div>
           ))}

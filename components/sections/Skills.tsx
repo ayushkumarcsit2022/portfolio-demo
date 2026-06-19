@@ -4,9 +4,14 @@ import React from "react";
 import { SKILL_CATEGORIES } from "@/lib/data";
 import SkillCard from "../ui/SkillCard";
 import SectionHeading from "../ui/SectionHeading";
+import SecOpsLab from "../ui/SecOpsLab";
 import { motion } from "framer-motion";
 
-export default function Skills() {
+interface SkillsProps {
+  categories?: typeof SKILL_CATEGORIES;
+}
+
+export default function Skills({ categories = SKILL_CATEGORIES }: SkillsProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -42,7 +47,7 @@ export default function Skills() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
-          {SKILL_CATEGORIES.map((cat, idx) => (
+          {categories.map((cat, idx) => (
             <motion.div key={idx} variants={itemVariants} className="h-full">
               <SkillCard
                 category={cat.category}
@@ -52,6 +57,11 @@ export default function Skills() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Interactive SecOps Auditing Lab */}
+        <div className="mt-16">
+          <SecOpsLab />
+        </div>
       </div>
     </section>
   );

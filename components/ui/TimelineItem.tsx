@@ -39,7 +39,7 @@ export default function TimelineItem({
         <div className="w-1.5 h-1.5 rounded-full bg-accent" />
       </div>
 
-      <div className="panel-glass border border-border-color rounded-lg p-6 hover:border-accent/45 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,245,255,0.05)] relative overflow-hidden group">
+      <div className="panel-glass border border-border-color rounded-lg p-6 hover:border-accent/45 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,102,255,0.08)] relative overflow-hidden group">
         {/* Glowing Top Edge */}
         <div className="absolute top-0 left-0 w-16 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
 

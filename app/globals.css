@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #06090E;
-  --color-surface: #0B111A;
-  --color-accent: #00F5FF;
-  --color-secondary: #FF5E3A;
-  --color-success: #10B981;
-  --color-text-primary: #F3F7FA;
-  --color-text-muted: #849BB0;
-  --color-border-color: #16222F;
+  --color-background: #050814;
+  --color-surface: #0C122C;
+  --color-accent: #0066FF;
+  --color-secondary: #EF4444;
+  --color-success: #FFFFFF;
+  --color-text-primary: #FFFFFF;
+  --color-text-muted: #E2E8F0;
+  --color-border-color: #1E294B;
 
   --font-heading: var(--font-syne), sans-serif;
   --font-sans: var(--font-dm-sans), sans-serif;
@@ -23,8 +23,8 @@
   }
 
   body {
-    background-color: #06090E;
-    color: #F3F7FA;
+    background-color: #050814;
+    color: #FFFFFF;
     font-family: var(--font-sans);
     overflow-x: hidden;
   }
@@ -35,14 +35,14 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #06090E;
+    background: #050814;
   }
   ::-webkit-scrollbar-thumb {
-    background: #16222F;
+    background: #1E294B;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #00F5FF;
+    background: #0066FF;
   }
 }
 
@@ -50,13 +50,13 @@
 .bg-grid-cyber {
   background-size: 50px 50px;
   background-image: 
-    linear-gradient(to right, rgba(0, 245, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 102, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 102, 255, 0.04) 1px, transparent 1px);
 }
 
 .bg-dot-matrix {
   background-size: 20px 20px;
-  background-image: radial-gradient(rgba(0, 245, 255, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(0, 102, 255, 0.06) 1px, transparent 1px);
 }
 
 /* Scanline animation */
@@ -69,7 +69,7 @@
   display: block;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 245, 255, 0.08) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 102, 255, 0.06) 50%), linear-gradient(90deg, rgba(239, 68, 68, 0.02), rgba(0, 102, 255, 0.02), rgba(255, 255, 255, 0.02));
   z-index: 2;
   background-size: 100% 3px, 3px 100%;
   pointer-events: none;
@@ -77,11 +77,11 @@
 
 /* Premium Panel Glassmorphism */
 .panel-glass {
-  background: rgba(11, 17, 26, 0.7);
+  background: rgba(12, 18, 44, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(22, 34, 47, 0.8);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(30, 41, 75, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
   position: relative;
 }
 
@@ -91,7 +91,7 @@
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(to bottom, rgba(0, 245, 255, 0.15), rgba(255, 94, 58, 0.02));
+  background: linear-gradient(to bottom, rgba(0, 102, 255, 0.2), rgba(239, 68, 68, 0.05));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -103,8 +103,8 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glow-cyan-hover:hover {
-  box-shadow: 0 0 25px rgba(0, 245, 255, 0.15);
-  border-color: rgba(0, 245, 255, 0.4);
+  box-shadow: 0 0 25px rgba(0, 102, 255, 0.2);
+  border-color: rgba(0, 102, 255, 0.5);
   transform: translateY(-2px);
 }
 
@@ -112,14 +112,14 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .glow-orange-hover:hover {
-  box-shadow: 0 0 25px rgba(255, 94, 58, 0.15);
-  border-color: rgba(255, 94, 58, 0.4);
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
   transform: translateY(-2px);
 }
 
-/* Animated cyber text gradient */
+/* Animated cyber text gradient (Blue, Red, White) */
 .text-cyber-gradient {
-  background: linear-gradient(to right, #00F5FF, #FF5E3A, #BD00FF, #00F5FF);
+  background: linear-gradient(to right, #0066FF, #EF4444, #FFFFFF, #0066FF);
   background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -151,7 +151,7 @@
 
 .blink-cursor::after {
   content: '_';
-  color: #00F5FF;
+  color: #0066FF;
   animation: blink 1s step-end infinite;
 }
 
@@ -164,7 +164,7 @@
   position: absolute;
   width: 6px;
   height: 6px;
-  border-color: #00F5FF;
+  border-color: #0066FF;
   border-style: solid;
   pointer-events: none;
 }

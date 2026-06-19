@@ -4,30 +4,47 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
 import NetworkBackground from "../ui/NetworkBackground";
+import CyberTerminal from "../ui/CyberTerminal";
 import { Shield, ShieldCheck, Terminal, Award, Network, Cpu, Activity, Server, Lock } from "lucide-react";
 
-export default function Hero() {
+interface HeroProps {
+  data?: {
+    name: string;
+    title: string;
+    description: string;
+    badges: { name: string; icon: string }[];
+  };
+}
+
+const iconMap: Record<string, any> = {
+  ShieldCheck, Network, Shield, Lock, Cpu, Server, Activity
+};
+
+export default function Hero({ data }: HeroProps) {
+  const nameToUse = data?.name || "Gbenga Owadokun";
+  const titleToUse = data?.title || "Senior Network & Cybersecurity Engineer";
+  const descToUse = data?.description || "Protecting networks. Securing infrastructure. Designing robust Zero Trust architectures and deploying next-generation firewalls for global enterprises.";
+  
   const [typedText, setTypedText] = useState("");
-  const fullName = "Gbenga Owadokun";
   
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
-      setTypedText(fullName.slice(0, index + 1));
+      setTypedText(nameToUse.slice(0, index + 1));
       index++;
-      if (index >= fullName.length) {
+      if (index >= nameToUse.length) {
         clearInterval(interval);
       }
     }, 100);
     return () => clearInterval(interval);
-  }, []);
+  }, [nameToUse]);
 
-  const badgeItems = [
-    { name: "AWS SASE", icon: ShieldCheck },
-    { name: "CCNA Route/Switch", icon: Network },
-    { name: "PCNSE Security", icon: Shield },
-    { name: "Palo Alto NGFW", icon: Lock },
-    { name: "Zero Trust Architecture", icon: Cpu }
+  const badgeItems = data?.badges || [
+    { name: "AWS SASE", icon: "ShieldCheck" },
+    { name: "CCNA Route/Switch", icon: "Network" },
+    { name: "PCNSE Security", icon: "Shield" },
+    { name: "Palo Alto NGFW", icon: "Lock" },
+    { name: "Zero Trust Architecture", icon: "Cpu" }
   ];
 
   // Simulated metrics for the right panel dashboard
@@ -106,7 +123,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="font-heading text-lg sm:text-2xl md:text-3xl font-bold text-accent uppercase tracking-wide"
             >
-              Senior Network & Cybersecurity Engineer
+              {titleToUse}
             </motion.h2>
 
             {/* Description */}
@@ -116,7 +133,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="font-sans text-sm sm:text-base md:text-lg text-text-muted font-medium max-w-xl leading-relaxed border-l-2 border-accent/40 pl-4"
             >
-              Protecting networks. Securing infrastructure. Designing robust Zero Trust architectures and deploying next-generation firewalls for global enterprises.
+              {descToUse}
             </motion.p>
 
             {/* CTAs */}
@@ -145,7 +162,7 @@ export default function Hero() {
                 <Award className="w-3.5 h-3.5 text-secondary" /> Core Operations:
               </span>
               {badgeItems.map((badge, idx) => {
-                const Icon = badge.icon;
+                const Icon = iconMap[badge.icon] || Shield;
                 return (
                   <div
                     key={idx}
@@ -236,18 +253,9 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Terminal Logs Simulation */}
-              <div className="p-4 bg-background/95 border border-border-color rounded-sm font-mono text-[10px] space-y-2 h-[100px] overflow-hidden text-left relative">
-                <div className="absolute top-2 right-2 flex items-center gap-1 text-text-muted font-bold text-[8px]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                  <span>STREAMING</span>
-                </div>
-                
-                {logs.map((log, idx) => (
-                  <div key={idx} className={`${idx === 0 ? "text-accent" : "text-text-muted"} truncate`}>
-                    <span className="text-secondary mr-1">&gt;</span> {log}
-                  </div>
-                ))}
+              {/* Interactive Cyber Terminal CLI */}
+              <div className="mt-4">
+                <CyberTerminal />
               </div>
             </motion.div>
           </div>

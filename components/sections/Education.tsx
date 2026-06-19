@@ -6,7 +6,11 @@ import { EDUCATION_ITEMS } from "@/lib/data";
 import { GraduationCap, Calendar, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function Education() {
+interface EducationProps {
+  list?: typeof EDUCATION_ITEMS;
+}
+
+export default function Education({ list = EDUCATION_ITEMS }: EducationProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -42,11 +46,11 @@ export default function Education() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
         >
-          {EDUCATION_ITEMS.map((edu, idx) => (
+          {list.map((edu, idx) => (
             <motion.div
               key={idx}
               variants={itemVariants}
-              className="p-6 panel-glass border border-border-color rounded-lg relative flex flex-col justify-between h-full hover:border-accent/40 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(0,245,255,0.05)] text-left"
+              className="p-6 panel-glass border border-border-color rounded-lg relative flex flex-col justify-between h-full hover:border-accent/40 transition-all duration-300 group hover:shadow-[0_0_20px_rgba(0,102,255,0.08)] text-left"
             >
               {/* Corner tech flag */}
               <span className="absolute top-3 right-4 font-mono text-[8px] text-text-muted font-bold">

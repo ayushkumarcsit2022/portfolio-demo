@@ -100,13 +100,13 @@ export default function NetworkBackground() {
         // Draw node
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius * pulse, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 229, 255, ${0.15 + pulse * 0.25})`;
+        ctx.fillStyle = `rgba(0, 102, 255, ${0.15 + pulse * 0.25})`;
         ctx.fill();
 
         // Draw glow
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius * pulse * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 229, 255, ${0.02 + pulse * 0.03})`;
+        ctx.fillStyle = `rgba(0, 102, 255, ${0.02 + pulse * 0.03})`;
         ctx.fill();
       });
 
@@ -120,7 +120,7 @@ export default function NetworkBackground() {
 
           if (dist < 120) {
             const alpha = (1 - dist / 120) * 0.15;
-            ctx.strokeStyle = `rgba(0, 229, 255, ${alpha})`;
+            ctx.strokeStyle = `rgba(0, 102, 255, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
@@ -136,7 +136,7 @@ export default function NetworkBackground() {
 
           if (dist < 180) {
             const alpha = (1 - dist / 180) * 0.25;
-            ctx.strokeStyle = `rgba(255, 107, 53, ${alpha})`; // warm orange accent on mouse interaction
+            ctx.strokeStyle = `rgba(239, 68, 68, ${alpha})`; // tactical red accent on mouse interaction
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(mouseRef.current.x, mouseRef.current.y);

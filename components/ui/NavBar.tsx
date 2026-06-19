@@ -5,7 +5,7 @@ import { Menu, X, FileDown, ShieldCheck } from "lucide-react";
 import Button from "./Button";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function NavBar() {
+export default function NavBar({ onViewResume }: { onViewResume?: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -38,7 +38,7 @@ export default function NavBar() {
         <div
           className={`max-w-7xl mx-auto px-6 py-3 flex justify-between items-center transition-all duration-300 rounded-lg ${
             isScrolled
-              ? "panel-glass shadow-[0_0_20px_rgba(0,245,255,0.08)]"
+              ? "panel-glass shadow-[0_0_20px_rgba(0,102,255,0.08)]"
               : "bg-transparent border border-transparent"
           }`}
         >
@@ -73,7 +73,7 @@ export default function NavBar() {
 
           {/* Desktop Resume CTA */}
           <div className="hidden md:block">
-            <Button variant="ghost" href="/resume.pdf" download="Gbenga_Owadokun_Resume.pdf">
+            <Button variant="ghost" onClick={onViewResume}>
               <FileDown className="w-4 h-4 text-accent" />
               <span>Download CV</span>
             </Button>
@@ -125,9 +125,10 @@ export default function NavBar() {
               >
                 <Button
                   variant="ghost"
-                  href="/resume.pdf"
-                  download="Gbenga_Owadokun_Resume.pdf"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    if (onViewResume) onViewResume();
+                  }}
                 >
                   <FileDown className="w-4 h-4 text-accent" />
                   <span>Download CV</span>

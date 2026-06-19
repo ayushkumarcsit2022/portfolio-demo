@@ -2,13 +2,17 @@
 
 import React from "react";
 import SectionHeading from "../ui/SectionHeading";
+import NetworkTopology from "../ui/NetworkTopology";
+import SaseVisualizer from "../ui/SaseVisualizer";
 import { PROJECTS } from "@/lib/data";
 import { motion } from "framer-motion";
 import { Monitor, ShieldAlert, Cpu, UserCheck, ArrowRight, ShieldCheck } from "lucide-react";
 
-export default function Projects() {
-  const project = PROJECTS[0];
+interface ProjectsProps {
+  list?: typeof PROJECTS;
+}
 
+export default function Projects({ list = PROJECTS }: ProjectsProps) {
   return (
     <section id="projects" className="py-24 bg-background relative overflow-hidden">
       {/* Divider & Cyber Grid */}
@@ -22,22 +26,34 @@ export default function Projects() {
           subtitle="Featured security initiatives and network architectural blueprints deployed for enterprise defense."
         />
 
-        {/* Editorial Project Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="panel-glass rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 border border-border-color shadow-[0_0_30px_rgba(0,245,255,0.06)]"
-        >
-          {/* Content Info Column */}
-          <div className="p-8 sm:p-12 lg:col-span-7 flex flex-col justify-between h-full text-left">
-            <div>
-              {/* Monospace project category */}
-              <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-accent uppercase tracking-widest mb-4 font-bold">
-                <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
-                <span>// ACTIVE_PRODUCTION_DEPLOYMENT</span>
-              </div>
+        {/* Interactive Network Topology Simulator */}
+        <div className="mb-16">
+          <NetworkTopology />
+        </div>
+
+        {/* Interactive SASE Visualizer */}
+        <div className="mb-16">
+          <SaseVisualizer />
+        </div>
+
+        <div className="space-y-16">
+          {list.map((project, projectIdx) => (
+            <motion.div
+              key={projectIdx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="panel-glass rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-12 border border-border-color shadow-[0_0_30px_rgba(0,102,255,0.08)]"
+            >
+              {/* Content Info Column */}
+              <div className="p-8 sm:p-12 lg:col-span-7 flex flex-col justify-between h-full text-left">
+                <div>
+                  {/* Monospace project category */}
+                  <div className="flex items-center gap-2 font-mono text-[10px] sm:text-xs text-accent uppercase tracking-widest mb-4 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+                    <span>// ACTIVE_PRODUCTION_DEPLOYMENT</span>
+                  </div>
               
               <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-text-primary uppercase tracking-tight mb-4">
                 {project.title}
@@ -88,15 +104,15 @@ export default function Projects() {
               {/* Nodes and Links Connections */}
               <path
                 d="M70 200 H330 M200 80 V320 M70 200 L200 80 L330 200 L200 320 Z"
-                stroke="rgba(0, 245, 255, 0.15)"
+                stroke="rgba(0, 102, 255, 0.15)"
                 strokeWidth="1.5"
                 strokeDasharray="4 4"
               />
 
               {/* Endpoint block */}
               <g transform="translate(30, 160)">
-                <rect width="80" height="80" rx="4" fill="#0B111A" stroke="#16222F" strokeWidth="2" />
-                <rect width="80" height="4" fill="#00F5FF" rx="2" />
+                <rect width="80" height="80" rx="4" fill="#0C122C" stroke="#1E294B" strokeWidth="2" />
+                <rect width="80" height="4" fill="#0066FF" rx="2" />
                 <foreignObject x="0" y="15" width="80" height="50">
                   <div className="flex flex-col items-center justify-center text-center text-text-primary">
                     <Monitor className="w-5 h-5 text-accent mb-1.5 animate-pulse" />
@@ -107,8 +123,8 @@ export default function Projects() {
 
               {/* NGFW / Firewall block */}
               <g transform="translate(160, 40)">
-                <rect width="80" height="80" rx="4" fill="#0B111A" stroke="#16222F" strokeWidth="2" />
-                <rect width="80" height="4" fill="#FF5E3A" rx="2" />
+                <rect width="80" height="80" rx="4" fill="#0C122C" stroke="#1E294B" strokeWidth="2" />
+                <rect width="80" height="4" fill="#EF4444" rx="2" />
                 <foreignObject x="0" y="15" width="80" height="50">
                   <div className="flex flex-col items-center justify-center text-center text-text-primary">
                     <ShieldAlert className="w-5 h-5 text-secondary mb-1.5" />
@@ -119,8 +135,8 @@ export default function Projects() {
 
               {/* Cortex XDR Engine block */}
               <g transform="translate(160, 280)">
-                <rect width="80" height="80" rx="4" fill="#0B111A" stroke="#16222F" strokeWidth="2" />
-                <rect width="80" height="4" fill="#00F5FF" rx="2" />
+                <rect width="80" height="80" rx="4" fill="#0C122C" stroke="#1E294B" strokeWidth="2" />
+                <rect width="80" height="4" fill="#0066FF" rx="2" />
                 <foreignObject x="0" y="15" width="80" height="50">
                   <div className="flex flex-col items-center justify-center text-center text-text-primary">
                     <Cpu className="w-5 h-5 text-accent mb-1.5" />
@@ -131,8 +147,8 @@ export default function Projects() {
 
               {/* Analyst Response block */}
               <g transform="translate(290, 160)">
-                <rect width="80" height="80" rx="4" fill="#0B111A" stroke="#16222F" strokeWidth="2" />
-                <rect width="80" height="4" fill="#FF5E3A" rx="2" />
+                <rect width="80" height="80" rx="4" fill="#0C122C" stroke="#1E294B" strokeWidth="2" />
+                <rect width="80" height="4" fill="#EF4444" rx="2" />
                 <foreignObject x="0" y="15" width="80" height="50">
                   <div className="flex flex-col items-center justify-center text-center text-text-primary">
                     <UserCheck className="w-5 h-5 text-secondary mb-1.5 animate-pulse" />
@@ -142,7 +158,7 @@ export default function Projects() {
               </g>
 
               {/* Signal Pulsing Particles */}
-              <circle r="4" fill="#FF5E3A">
+              <circle r="4" fill="#EF4444">
                 <animateMotion
                   path="M70 200 L200 80 L330 200"
                   begin="0s"
@@ -150,7 +166,7 @@ export default function Projects() {
                   repeatCount="indefinite"
                 />
               </circle>
-              <circle r="4" fill="#00F5FF">
+              <circle r="4" fill="#0066FF">
                 <animateMotion
                   path="M70 200 L200 320 L330 200"
                   begin="1.5s"
@@ -161,7 +177,9 @@ export default function Projects() {
             </svg>
           </div>
         </motion.div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
   );
 }

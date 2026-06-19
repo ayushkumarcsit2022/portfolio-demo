@@ -26,7 +26,7 @@ export default function SkillCard({ category, iconName, items }: SkillCardProps)
   const IconComponent = iconMap[iconName] || Shield;
 
   return (
-    <div className="relative group p-6 panel-glass border border-border-color rounded-lg glow-cyan-hover flex flex-col h-full hover:shadow-[0_0_25px_rgba(0,245,255,0.08)]">
+    <div className="relative group p-6 panel-glass border border-border-color rounded-lg glow-cyan-hover flex flex-col h-full hover:shadow-[0_0_25px_rgba(0,102,255,0.08)]">
       {/* Interactive top glow line */}
       <div className="absolute top-0 left-0 w-12 h-[2px] bg-accent transition-all duration-300 group-hover:w-full" />
       

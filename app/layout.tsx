@@ -57,8 +57,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${syne.variable} ${dmSans.variable} h-full antialiased dark`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-sans bg-background text-text-primary">
+      <body
+        className="min-h-full flex flex-col font-sans bg-background text-text-primary"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

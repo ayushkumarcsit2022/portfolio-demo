@@ -25,7 +25,7 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-secondary text-background hover:bg-opacity-90 shadow-[0_0_15px_rgba(255,107,53,0.2)] border border-transparent",
+      "bg-secondary text-white hover:bg-opacity-90 shadow-[0_0_15px_rgba(239,68,68,0.3)] border border-transparent",
     ghost:
       "bg-transparent text-accent border border-accent/30 hover:border-accent hover:bg-accent/5",
   };
